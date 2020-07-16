@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'students'], function () {
-
     Route::get('/', 'Api\StudentsController@index');
     Route::post('/', 'Api\StudentsController@store');
     Route::patch('/{student}', 'Api\StudentsController@update');

@@ -17,7 +17,7 @@ class StudentsController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
+        $students = Student::latest()->get();
 
         return ApiResponse::success(
             StudentResource::collection($students)

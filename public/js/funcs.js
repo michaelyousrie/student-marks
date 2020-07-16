@@ -6,8 +6,8 @@ function hideLoader() {
     $('#loader').hide();
 }
 
-function getStudents(page = 1) {
-    axios.get(`/api/students?page=${page}`)
+function getStudents() {
+    axios.get(`/api/students`)
         .then(function (resp) {
             $('#students-table').html('');
 

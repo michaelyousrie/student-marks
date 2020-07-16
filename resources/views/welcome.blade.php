@@ -21,7 +21,12 @@
     </div>
 
     <div class="container" id="wrapper" style="display: hidden">
-        <h1 class="ul-title">Students</h1>
+        <h1 class="ul-title">
+            Students
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add-student-modal">
+                +
+              </button>
+        </h1>
 
         <table class="table table-striped">
             <thead>
@@ -35,6 +40,31 @@
             </tbody>
         </table>
     </div>
+
+    {{-- New Student Modal --}}
+    <div class="modal" tabindex="-1" role="dialog" id="add-student-modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Student</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <label for="new-student-name">Student Name</label>
+                  <input type="text" id="new-student-name" class="form-control" placeholder="Name" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary add-student-modal-save">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{-- /New Student Modal --}}
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

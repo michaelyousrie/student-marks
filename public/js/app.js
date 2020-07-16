@@ -19,7 +19,7 @@ $('#students-table').on('click', '.update-student', function (e) {
     let name = $(`td.student-${id}-name`).text();
 
     $(`td.student-${id}-name`).html(`
-        <input type="text" class="form-control" id="student-${id}-name-update-input" value="${name}"> 
+        <input type="text" class="form-control" id="student-${id}-name-update-input" value="${name}" required> 
 
         <a href="#" class="text-success confirm-update-student-name" data-id="${id}">Confirm</a>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -49,8 +49,26 @@ $('#students-table').on('click', '.confirm-update-student-name', function (e) {
             $(`td.student-${id}-name`).html(`${name}`);
         })
         .catch(function (error) {
-            alert(error.response.data.errors.name[0]);
+            alert(error.response.data.errors.name);
         });
 
     hideLoader();
+});
+
+$('.add-student-modal-save').on('click', function () {
+    showLoader();
+
+    let name = $('input#new-student-name').val();
+
+    axios.post('/api/students', { name })
+        .then(function (resp) {
+            getStudents();
+            $('#add-student-modal').modal('hide');
+            hideLoader();
+        })
+        .catch(function (error) {
+            const err = error.response;
+            alert(err.data.errors.name);
+            hideLoader();
+        });
 });

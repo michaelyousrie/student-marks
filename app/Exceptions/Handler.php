@@ -56,7 +56,7 @@ class Handler extends ExceptionHandler
             $modelName = ucfirst(strtolower(explode('\\', $exception->getModel())[1]));
 
             return ApiResponse::failure([
-                'id'        => "{$modelName} with ID {$request->student} was not found!"
+                'id'        => "The {$modelName} was not found!"
             ], [], 404);
         }
 

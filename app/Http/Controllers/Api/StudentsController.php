@@ -7,8 +7,11 @@ use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Http\Resources\MarkResource;
 use App\Http\Resources\StudentCollection;
 use App\Http\Resources\StudentResource;
+use App\StudentMark;
+use Facade\FlareClient\Api;
 
 class StudentsController extends Controller
 {
@@ -46,5 +49,12 @@ class StudentsController extends Controller
         $student->delete();
 
         return ApiResponse::success();
+    }
+
+    public function listMarks(Student $student)
+    {
+        return ApiResponse::success(
+            MarkResource::collection($student->marks)
+        );
     }
 }

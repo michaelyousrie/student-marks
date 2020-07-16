@@ -17,6 +17,19 @@ class StudentsController extends Controller
 {
     public function index()
     {
+        $students = Student::all();
+
+        return ApiResponse::success(
+            StudentResource::collection($students)
+        );
+    }
+
+    /** 
+     * Unused in the front end to save time. 
+     * Tested with postman.
+     * */
+    public function indexPaginated()
+    {
         $students = Student::simplePaginate();
 
         return ApiResponse::success(

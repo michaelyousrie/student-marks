@@ -13,7 +13,12 @@ class StudentCollection extends ResourceCollection
         $this->pagination = [
             'current_page'  => $resource->currentPage(),
             'next_page'     => $resource->path() . '?page=' . ((int)$resource->currentPage() + 1),
+            'prev_page'     => null
         ];
+
+        if ($resource->currentPage() > 1) {
+            $this->pagination['prev_page'] = $resource->path() . '?page=' . ((int)$resource->currentPage() - 1);
+        }
 
         $resource = $resource->getCollection();
 

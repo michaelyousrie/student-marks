@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 /** Students Routes */
 Route::group(['prefix' => 'students'], function () {
     Route::get('/', 'Api\StudentsController@index');
+    Route::get('/paginated', 'Api\StudentsController@indexPaginated');
     Route::get('/{student}/marks', 'Api\StudentsController@listMarks');
     Route::post('/', 'Api\StudentsController@store');
     Route::patch('/{student}', 'Api\StudentsController@update');
